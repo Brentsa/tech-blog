@@ -1,6 +1,6 @@
 //import router library as well as the User model
 const router = require('express').Router();
-const User = require('../../models/User');
+const {User} = require('../../models');
 
 //User routes: /api/users
 //===============================================================
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     User.findAll({})
     .then(dbUserData => res.json(dbUserData))
     .catch(err => res.status(500).json(err));
-})
+});
 
 //create a new user in the db
 router.post('/', (req, res) => {
@@ -23,6 +23,6 @@ router.post('/', (req, res) => {
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => res.status(500).json(err));
-})
+});
 
 module.exports = router;
