@@ -1,12 +1,29 @@
+//import router library as well as the models
 const router = require('express').Router();
-const {Post, User} = require('../../models');
+const {Post, User, Comment} = require('../../models');
 
 //Post routes: /api/posts
 //===============================================================
 
 //get all posts
 router.get('/', (req, res) => {
-    Post.findAll({})
+    Post.findAll({
+        include: [
+            {
+                model: User,
+                attributes: ['username', 'createdAt', 'updatedAt']
+            },
+            {
+                model: Comment,
+                attributes: ['text', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
+        ]
+        
+    })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => res.status(500).json(err));
 });
@@ -17,10 +34,20 @@ router.get('/:id', (req, res) => {
         where:{
             id: req.params.id
         },
-        include: {
-            model: User,
-            attributes: ['username', 'createdAt', 'updatedAt']
-        }
+        include: [
+            {
+                model: User,
+                attributes: ['username', 'createdAt', 'updatedAt']
+            },
+            {
+                model: Comment,
+                attributes: ['text', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            }
+        ]
     })
     .then(dbPostData => {
         if(!dbPostData)

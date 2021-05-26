@@ -12,6 +12,24 @@ router.get('/', (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
+//Get a single user
+router.get('/:id', (req, res) => {
+    User.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbUserData => {
+        if(!dbUserData){
+            res.status(404).json({message: 'User not found in database'});
+        }
+        else {
+            res.json(dbUserData);
+        }
+    })
+    .catch(err => res.status(500).json(err));
+});
+
 //create a new user in the db
 router.post('/', (req, res) => {
     //expects: { username: testUser, password: eatfood123}
