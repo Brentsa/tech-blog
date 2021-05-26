@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    background-color: blanchedalmond;
+}
+
+.wrapper {
+    width: 100%;
+    min-width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    border-bottom: solid 4px orange;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1%;
+}
+
+header h1{
+    background-color: orange;
+    border-radius: 8px;
+    color: white;
+    padding: 2px 8px;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    padding: 0.5%;
+    color: white;
+    font-weight: bold;
+    font-size: 120%;
+}
