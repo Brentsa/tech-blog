@@ -1,1 +1,7 @@
-<h1>HomePage :)</h1>
+<ol class="blog-container">
+    {{#each posts as |post|}}
+    <li>
+        {{> single-post post}}
+    </li>
+    {{/each}}
+</ol>

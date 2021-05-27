@@ -1,11 +1,18 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: system-ui;
     background-color: blanchedalmond;
 }
 
 .wrapper {
     width: 100%;
-    min-width: 100%;
+    min-height: 100%;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -13,30 +20,83 @@
 }
 
 header {
-    border-bottom: solid 4px orange;
+    border-bottom: solid 4px darkorange;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1%;
+    padding: 1%;
+    margin-bottom: 20px;
 }
 
 header h1{
-    background-color: orange;
+    background-color: darkorange;
     border-radius: 8px;
     color: white;
-    padding: 2px 8px;
+    padding: 4px 8px;
+    font-family: none;
+    font-size: 300%;
+}
+
+header a{
+    text-decoration: none;
+    color: darkorange;
+    font-weight: bold;
+    font-size: 180%;
+    transition: color .1s;
+    margin: 0 10px;
+}
+
+header a:hover{
+    color: orangered;
 }
 
 main {
     flex: 1;
+    margin: 0 6%;
 }
 
 footer {
-    background-color: orange;
+    background-color: darkorange;
     display: flex;
     justify-content: center;
     padding: 0.5%;
     color: white;
     font-weight: bold;
     font-size: 120%;
+}
+
+ol, li {
+    list-style-type: none;
+}
+
+.blog-post{
+    margin: 20px;
+    border: 6px solid orange;
+    box-shadow: 4px 4px 4px lightgrey;
+}
+
+.blog-header{
+    display: flex;
+    justify-content: space-between;
+    background-color: orange;
+    align-items: center;
+    padding: 6px;
+}
+
+.blog-header h2 {
+    color: white;
+    background-color: orange;
+    font-size: 160%;
+    padding: 4px;
+}
+
+.blog-header h3 {
+    color: white;
+    background-color: orange;
+    font-size: 100%;
+    font-style: italic;
+}
+
+.blog-content{
+    padding: 10px;
 }
