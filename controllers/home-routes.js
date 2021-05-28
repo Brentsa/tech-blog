@@ -5,6 +5,7 @@ const {User, Post, Comment} = require('../models');
 // Home routes: /
 //===============================================================
 
+//Home page
 router.get('/', (req, res) => {
    Post.findAll({
       include: User
@@ -17,5 +18,15 @@ router.get('/', (req, res) => {
    })
    .catch(err => res.status(500).json(err));
 });
+
+//Login page
+router.get('/login', (req, res) => {
+   res.render('login');
+})
+
+//Signup page
+router.get('/signup', (req, res) => {
+   res.render('signup');
+})
 
 module.exports = router;

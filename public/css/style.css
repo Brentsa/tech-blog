@@ -37,7 +37,7 @@ header h1{
     font-size: 300%;
 }
 
-header a{
+a{
     text-decoration: none;
     color: darkorange;
     font-weight: bold;
@@ -46,7 +46,7 @@ header a{
     margin: 0 10px;
 }
 
-header a:hover{
+a:hover{
     color: orangered;
 }
 
@@ -99,4 +99,75 @@ ol, li {
 
 .blog-content{
     padding: 10px;
+}
+
+.login-form{
+    margin: 20px;
+    border: 6px solid orange;
+    box-shadow: 4px 4px 4px lightgrey;
+}
+
+.login-header{
+    background-color: orange;
+    padding: 6px;
+}
+
+.login-header h2{
+    color: white;
+    font-size: 160%;
+    padding: 4px;
+}
+
+.login-body{
+    padding: 20px 10px;
+}
+
+form label{
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-block{
+    margin-bottom: 2%;
+}
+
+textarea, input {
+    padding: .5%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input{
+    width: 100%;
+}
+
+button {
+    background-color: darkorange;
+    border: 0;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color .1s;
+    min-width: 200px;
+}
+
+button:hover {
+    background-color: orangered;
+}
+
+form a{
+    font-size: 100%;
+}
+
+form p{
+    text-align: center;
+}
+
+.login-flex{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
 }
