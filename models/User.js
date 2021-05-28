@@ -6,8 +6,8 @@ const bcrypt = require('bcrypt');
 class User extends Model{
 
     //check the provided password again the user password and authenticate the user
-    async validatePassword(loginPassword){
-        const valid = await bcrypt.compare(loginPassword, this.password);
+    validatePassword(loginPassword){
+        const valid = bcrypt.compareSync(loginPassword, this.password);
         return valid;
     }
 }

@@ -1,13 +1,27 @@
 //Import libraries
 const express = require('express');
+const path = require('path');
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
 const exphbs = require('express-handlebars')
-const path = require('path');
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 //Initialize express server and define the port to use
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+//Define our session configuration
+const sess = {
+    secret: 'An Amazing Secret For No One To See',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({db: sequelize})
+};
+
+//Instruct the server to use our session and store it in the database
+app.use(session(sess));
 
 //Create a handlebars instance and then register the handlebars view engine
 const hbs = exphbs.create({});
