@@ -265,3 +265,12 @@ textarea{
     height: 30px;
     font-size: 20px;
 }
+
+.delete-btn{
+    font-size: 20px;
+    background-color: orangered;
+}
+
+.delete-btn:hover{
+    background-color: red;
+}

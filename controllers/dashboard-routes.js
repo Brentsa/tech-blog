@@ -25,10 +25,17 @@ router.get('/', authorized, (req, res)=>{
 });
 
 //Dashboard create new post page
-router.get('/create', authorized, (req, res)=>{
+router.get('/create', authorized, (req, res) => {
     //check if the user is authorized with middleware and load their posts and redirect to login page if not
     //render the dashboard
     res.render('dashboard-create', { loggedIn: req.session.loggedIn });
 });
 
- module.exports = router;
+//Dashboard edit/delete a post page
+router.get('/edit/:id', authorized, (req, res) => {
+    //check if the user is authorized with middleware and load their posts and redirect to login page if not
+    //render the dashboard
+    res.render('dashboard-update-delete', { loggedIn: req.session.loggedIn });
+});
+
+module.exports = router;
