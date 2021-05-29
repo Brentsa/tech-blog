@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('sequelize');
 const {User, Post, Comment} = require('../models');
-const authorized = require('../utils/authorization');
 
 // Home routes: /
 //===============================================================
@@ -75,14 +74,6 @@ router.get('/post/:id', (req, res) => {
       res.render('post-page', {post, loggedIn: req.session.loggedIn});
   })
   .catch(err => res.status(500).json(err));
-
 });
-
-//Dashboard page
-router.get('/dashboard', authorized, (req, res)=>{
-   //check if the user is authorized with middleware and redirect to login page if not
-   res.render('dashboard');
-})
-
 
 module.exports = router;

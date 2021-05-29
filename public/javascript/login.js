@@ -15,7 +15,7 @@ async function loginFormHandler(event){
         });
 
         if(response.ok){
-            document.location.replace('/');
+            document.location.replace('/dashboard');
         }
         else{
             alert('Cannot login. Error: ' + response.statusText);

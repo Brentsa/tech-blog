@@ -230,3 +230,14 @@ textarea{
     min-width: 100%;
     min-height: 80px;
 }
+
+.title-format {
+    background-color: orange;
+    border-radius: 8px;
+    color: white;
+    padding: 4px 8px;
+    font-family: none;
+    font-size: 200%;
+    text-align: center;
+    box-shadow: 4px 4px 4px lightgrey;
+}

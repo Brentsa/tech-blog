@@ -1,0 +1,12 @@
+{{#if posts.length}}
+<h1 class="title-format">Your Posts</h1>
+<ol class="blog-container">
+    {{#each posts as |post|}}
+    <li>
+        {{> single-post-small post}}
+    </li>
+    {{/each}}
+</ol>
+{{else}}
+<h1 class="title-format">Create your first post!</h1>
+{{/if}}
