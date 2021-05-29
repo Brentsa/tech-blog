@@ -1,6 +1,7 @@
 //import router library as well as the models
 const router = require('express').Router();
 const {Post, User, Comment} = require('../../models');
+const authorized = require('../../utils/authorization');
 
 //Post routes: /api/posts
 //===============================================================
@@ -59,7 +60,7 @@ router.get('/:id', (req, res) => {
 })
 
 //create a new post
-router.post('/', (req, res) => {
+router.post('/', authorized, (req, res) => {
     //expects: { title: "NewPost", content: "Everything you could ever dream of", user_id: 1 }
     const { title, content} = req.body;
 
@@ -79,8 +80,38 @@ router.post('/', (req, res) => {
     .catch(err => res.status(500).json(err));
 });
 
+//Update a post's title and/or content
+router.put('/:id', authorized, (req, res) => {
+    //expects: { title: "NewPost", content: "Everything you could ever dream of" }
+    const { title, content} = req.body;
+
+    Post.update(
+        {
+            title,
+            content
+        },
+        {
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+    .then(dbUpdatedData => {
+        if(!dbUpdatedData){
+            res.status(404).json({message: 'Post with specified id not found.'})
+            return;
+        }
+
+        res.json(dbUpdatedData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 //delete a post based on id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authorized, (req, res) => {
     Post.destroy({
         where: {
             id: req.params.id

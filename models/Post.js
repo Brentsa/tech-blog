@@ -14,11 +14,11 @@ Post.init(
             autoIncrement: true
         },
         title: {
-            type: DataTypes.STRING(5000),
+            type: DataTypes.STRING(50),
             allowNull: false,
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(5000),
             allowNull: false,
         },
         user_id: {
