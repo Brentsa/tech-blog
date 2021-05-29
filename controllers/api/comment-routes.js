@@ -54,7 +54,15 @@ router.get('/:id', (req, res) => {
 //Create a comment
 router.post('/', (req, res) => {
     //expects: { text: "some text here", post_id: 2, user_id: 1 }
-    const { text, post_id, user_id } = req.body;
+    const { text, post_id } = req.body;
+
+    //If there is a logged in session then get the user_id from it
+    if(req.session.loggedIn){
+        var user_id = req.session.user_id;
+    }
+    else{
+        var user_id = req.body.user_id;
+    }
 
     Comment.create({
         text,

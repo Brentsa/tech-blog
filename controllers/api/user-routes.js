@@ -42,10 +42,11 @@ router.post('/', (req, res) => {
     .then(dbUserData => {
         req.session.save(() => {
             req.session.username = dbUserData.username;
-            req.session.password = dbUserData.password;
+            req.session.user_id = dbUserData.id;
             req.session.loggedIn = true;
 
-            res.json(dbUserData);
+            console.log(req.session);
+            res.redirect('/');
         })
     })
     .catch(err => res.status(500).json(err));
@@ -79,13 +80,14 @@ router.post('/login', (req, res) => {
         //If login credentials are correct then we log the user in and save the session
         req.session.save(() => {
             req.session.username = dbUserData.username;
-            req.session.password = dbUserData.password;
+            req.session.user_id = dbUserData.id;
             req.session.loggedIn = true;
 
-            res.json({ user: dbUserData, message: 'You are logged in!' });
+            console.log(req.session);
+            res.redirect('/');
         })
-
     })
+    .catch(err => res.status(500).json(err));
 })
 
 //Log the user out

@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 //Instructs the server to use static files from the public folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 //Use the routes found in controllers
 app.use(routes);
