@@ -1,5 +1,9 @@
 {{#if posts.length}}
-<h1 class="title-format">Your Posts</h1>
+<div class="dashboard-header">
+    <h1 class="title-format">Your Posts</h1>
+    <a href="/dashboard/create"><button class="a-button">+ Add New Post</button></a>
+</div>
+
 <ol class="blog-container">
     {{#each posts as |post|}}
     <li>
@@ -8,5 +12,8 @@
     {{/each}}
 </ol>
 {{else}}
-<h1 class="title-format">Create your first post!</h1>
+<div class="dashboard-header">
+    <h1 class="title-format">Create your first post!</h1>
+    <a href="/dashboard/create"><button class="a-button">+ Add New Post</button></a>
+</div>
 {{/if}}

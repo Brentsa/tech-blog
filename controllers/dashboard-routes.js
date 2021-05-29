@@ -8,7 +8,7 @@ const authorized = require('../utils/authorization');
 
 //Dashboard page
 router.get('/', authorized, (req, res)=>{
-     //check if the user is authorized with middleware and load their posts and redirect to login page if not
+    //check if the user is authorized with middleware and load their posts and redirect to login page if not
     Post.findAll({
         where:{
             user_id: req.session.user_id
@@ -22,6 +22,13 @@ router.get('/', authorized, (req, res)=>{
         res.render('dashboard', { posts, loggedIn: req.session.loggedIn });
     })
     .catch(err => res.status(500).json(err));
- });
+});
+
+//Dashboard create new post page
+router.get('/create', authorized, (req, res)=>{
+    //check if the user is authorized with middleware and load their posts and redirect to login page if not
+    //render the dashboard
+    res.render('dashboard-create', { loggedIn: req.session.loggedIn });
+});
 
  module.exports = router;

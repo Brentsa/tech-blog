@@ -61,8 +61,15 @@ router.get('/:id', (req, res) => {
 //create a new post
 router.post('/', (req, res) => {
     //expects: { title: "NewPost", content: "Everything you could ever dream of", user_id: 1 }
-    const { title, content, user_id } = req.body;
+    const { title, content} = req.body;
 
+    if(req.session.loggedIn){
+        var user_id = req.session.user_id
+    }
+    else{
+        var user_id = req.body.user_id
+    }
+    
     Post.create({
         title,
         content,

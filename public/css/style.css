@@ -156,6 +156,8 @@ button {
     border-radius: 5px;
     transition: background-color .1s;
     min-width: 200px;
+    max-width: 400px;
+    margin: 10px;
 }
 
 button:hover {
@@ -228,7 +230,8 @@ form p{
 
 textarea{
     min-width: 100%;
-    min-height: 80px;
+    max-width: 100%;
+    margin-bottom: 10px;
 }
 
 .title-format {
@@ -240,4 +243,25 @@ textarea{
     font-size: 200%;
     text-align: center;
     box-shadow: 4px 4px 4px lightgrey;
+    width: 60%;
+}
+
+.dashboard-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.blog-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px black solid;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.a-button{
+    height: 30px;
+    font-size: 20px;
 }
