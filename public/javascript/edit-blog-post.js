@@ -23,6 +23,9 @@ async function handleBlogUpdate(event){
             alert(response.statusText);
         }
     }
+    else{
+        alert('Must enter a title and content for your blog.');
+    }
 }
 
 async function handleBlogDelete(event){
@@ -42,6 +45,7 @@ async function handleBlogDelete(event){
     }
     else{
         alert(response.statusText);
+        document.location.replace('/login');
     }
 }
 

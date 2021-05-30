@@ -19,7 +19,11 @@ async function handleCreateNewBlog(event){
         }
         else{
             alert(response.statusText);
+            document.location.replace('/login');
         }
+    }
+    else{
+        alert('Must enter a title and content for your blog.');
     }
 }
 

@@ -1,7 +1,7 @@
 <section class="blog-post">
     <a href="/post/{{id}}" class="blog-header">
         <h2>{{title}}</h2>
-        <h3>Posted by {{user.username}} on {{createdAt}}</h3>
+        <h3>Posted by {{user.username}} on {{format_date createdAt}}</h3>
     </a>
     <div class="blog-content">
         {{content}}

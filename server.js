@@ -6,6 +6,7 @@ const routes = require('./controllers');
 const exphbs = require('express-handlebars')
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const helpers = require('./utils/helpers');
 
 //Initialize express server and define the port to use
 const app = express();
@@ -14,17 +15,20 @@ const PORT = process.env.PORT || 3001;
 //Define our session configuration
 const sess = {
     secret: 'An Amazing Secret For No One To See',
-    cookie: {},
+    //Set the expiry of the cookie to 5 mins after inactivity
+    cookie: { maxAge: 60000 * 5 },
     resave: false,
     saveUninitialized: true,
-    store: new SequelizeStore({db: sequelize})
+    store: new SequelizeStore({db: sequelize}),
+    //Reset the expiry after any response
+    rolling: true
 };
 
 //Instruct the server to use our session and store it in the database
 app.use(session(sess));
 
 //Create a handlebars instance and then register the handlebars view engine
-const hbs = exphbs.create({});
+const hbs = exphbs.create({helpers});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
