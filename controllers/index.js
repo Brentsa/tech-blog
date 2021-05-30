@@ -13,4 +13,7 @@ router.use('/dashboard', dashboardRoutes);
 //instruct router to use the home routes
 router.use('/', homeRoutes);
 
+//send error code if route not found
+router.use((req, res) => {res.status(404).end()});
+
 module.exports = router;
